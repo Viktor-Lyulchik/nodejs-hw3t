@@ -11,7 +11,7 @@ export const getNotes = async (req, res) => {
   if (tag) {
     notesQuery.where('tag').equals(tag);
   }
-  if (search) {
+  if (search && search.trim() !== '') {
     notesQuery.or([
       { title: { $regex: search, $options: 'i' } },
       { content: { $regex: search, $options: 'i' } },
